@@ -1,13 +1,14 @@
 function showCookiesForTab(tabs) {
     let tab = tabs.pop();
+    let cookiesCount = 0;
     var gettingAllCookies = browser.cookies.getAll({url: tab.url});
 
     gettingAllCookies.then((cookies) => {
   
       var activeTabUrl = document.getElementById('header-title');
-      var text = document.createTextNode("Cookies at: "+tab.title);
-      var cookieList = document.getElementById('cookie-list');
+      var text = document.createTextNode(": "+tab.title);
       activeTabUrl.appendChild(text);
+      var cookieList = document.getElementById('cookie-list');
   
       if (cookies.length > 0) {
         for (let cookie of cookies) {
@@ -15,7 +16,11 @@ function showCookiesForTab(tabs) {
           let content = document.createTextNode(cookie.name + ": "+ cookie.value);
           li.appendChild(content);
           cookieList.appendChild(li);
+          cookiesCount += 1;
         }
+        var countTab = document.getElementById("count");
+        var cookieText = document.createTextNode("Number of cookies: " + cookiesCount);
+        countTab.appendChild(cookieText);
       } else {
         let p = document.createElement("p");
         let content = document.createTextNode("No cookies in this tab.");
@@ -25,6 +30,8 @@ function showCookiesForTab(tabs) {
         parent.appendChild(p);
       }
     });
+
+    
   }
 
   function getActiveTab() {
