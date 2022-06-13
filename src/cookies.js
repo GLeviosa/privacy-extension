@@ -8,19 +8,24 @@ function showCookiesForTab(tabs) {
       var activeTabUrl = document.getElementById('header-title');
       var text = document.createTextNode(": "+tab.title);
       activeTabUrl.appendChild(text);
-      var cookieList = document.getElementById('cookie-list');
+      // var cookieList = document.getElementById('cookie-list');
   
       if (cookies.length > 0) {
         for (let cookie of cookies) {
-          let li = document.createElement("li");
-          let content = document.createTextNode(cookie.name + ": "+ cookie.value);
-          li.appendChild(content);
-          cookieList.appendChild(li);
           cookiesCount += 1;
         }
-        var countTab = document.getElementById("count");
-        var cookieText = document.createTextNode("Number of cookies: " + cookiesCount);
-        countTab.appendChild(cookieText);
+        var cookieElement = document.getElementById("cookie-count");
+        var cookieText = document.createTextNode("Cookie Count: " + cookiesCount);
+        cookieElement.appendChild(cookieText);
+        cookieElement.setAttribute("value", (10*cookiesCount)/11);
+        
+
+        if (cookiesCount >= 100) {
+          cookieElement.style.color = "red"
+        } else if (cookiesCount >= 50 && cookiesCount < 100){
+          cookieElement.style.color = "orange"
+        }
+
       } else {
         let p = document.createElement("p");
         let content = document.createTextNode("No cookies in this tab.");

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/main.css"/>
+  </head>
+
+  <body>
+    <div class="panel">
+      <div class="panel-section panel-section-header">
+        <div class="text-section-header" id="header-title">Privacy Check At</div>
+      </div>
+      <div class="panel-heading">
+        <h1 id="security-status">Teste</h1>
+        <p class="text-header" id="cookie-count" value="0"></p>
+        
+        <details>
+          <summary class="text-header" id="third-party-status">
+            Third Party Domains:
+          </summary>
+          <h2 id="third-party-count" value="0"></h2>
+          <h3>All third party domains:</h3>
+          <ul id="third-party-list"></ul>
+        </details>
+        <details>
+          <summary class="text-header" id="local-storage-status">
+            Local Storage information:
+          </summary>
+          <div id="header-title-local-storage" class="header-title"></div>
+          <h2 id="local-storage-count" value="0"></h2>
+          <h3>All items at local storage:</h3>
+          <ul id="local-storage-list"></ul>
+        </details>
+        <p id="third-party"></p>
+        
+      </div>
+    </div>
+    <script src="src/cookies.js"></script>
+    <script src="src/thirdParty.js"></script>
+    <script src="src/localStorage.js"></script>
+    <script src="src/websiteSecurity.js"></script>
+  </body>
+
+</html>

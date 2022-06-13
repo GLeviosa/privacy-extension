@@ -1,21 +1,26 @@
 {
     "manifest_version": 2,
-    "name": "List cookies",
+    "name": "Privacy Check",
     "version": "1.0",
     "browser_action": {
       "browser_style": true,
-      "default_title": "List cookies in the active tab",
-      "default_popup": "cookies.html",
+      "default_title": "Check your privacy on current tab.",
+      "default_popup": "privacyCheck.html",
       "default_icon": {
         "19": "icons/default19.png",
         "38": "icons/default38.png"
       }
     },
-    "description": "List cookies in the active tab.",
+    "description": "Check your privacy on current tab.",
     "icons": {
       "48": "icons/cookie.png",
       "96": "icons/cookie@2x.png"
     },
-    "homepage_url": "https://github.com/mdn/webextensions-examples/tree/master/list-cookies",
-    "permissions": ["cookies","<all_urls>","tabs"]
+    "permissions": ["cookies","<all_urls>","tabs", "storage"],
+    "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["src/app.js"]
+    }
+  ]
   }
